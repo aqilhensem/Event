@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilih Makcik Nak Makan Apa</title>
+    <style>
+        body {
+            text-align: center; /* Pusatkan teks */
+            font-family: Arial, sans-serif; /* Font yang lebih cantik */
+            background-color: #ffccff; /* Warna latar belakang pink */
+            background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"%3E%3Cpath fill="%23ff69b4" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/%3E%3C/svg%3E'); /* Emoji hati sebagai latar belakang */
+            background-repeat: repeat; /* Ulang latar belakang */
+            margin: 0; /* Tiada margin pada body */
+            padding: 20px; /* Ruang dalam untuk body */
+        }
+
+        h1 {
+            margin-bottom: 20px; /* Ruang bawah tajuk */
+            font-size: 28px; /* Saiz font untuk tajuk */
+            color: #333; /* Warna tajuk */
+        }
+
+        .food-container {
+            display: flex; /* Menggunakan flexbox untuk susunan */
+            flex-wrap: wrap; /* Membolehkan barisan baru apabila ruang tidak cukup */
+            justify-content: center; /* Pusatkan isi kandungan */
+        }
+
+        .food-item {
+            margin: 10px; /* Ruang antara item */
+            border: 2px solid #ddd; /* Border untuk setiap kotak makanan */
+            border-radius: 10px; /* Sudut bulat untuk kotak */
+            padding: 10px; /* Ruang dalam untuk kotak */
+            background-color: #fff; /* Warna latar belakang kotak */
+            transition: box-shadow 0.3s; /* Animasi untuk bayang */
+        }
+
+        .food-item:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Bayang ketika hover */
+        }
+
+        label {
+            display: block; /* Pusatkan teks dalam label */
+            font-size: 20px; /* Saiz font untuk label */
+            color: #333; /* Warna teks */
+            text-align: center; /* Pusatkan teks di dalam label */
+        }
+
+        img {
+            width: 250px; /* Saiz lebar gambar */
+            height: 300px; /* Tinggi tetap untuk semua gambar */
+            object-fit: cover; /* Memastikan gambar memenuhi ruang */
+            margin-bottom: 5px; /* Ruang bawah gambar */
+        }
+
+        input[type="radio"] {
+            display: none; /* Sembunyikan butang radio */
+        }
+
+        input[type="radio"]:checked + .food-item {
+            border: 2px solid #ff69b4; /* Warna border jika dipilih */
+        }
+    </style>
+</head>
+<body>
+    <h1>Pilih Jenis Makanan</h1>
+    
+    <div class="food-container">
+        <label>
+            <input type="radio" name="food" value="chicken chop">
+            <div class="food-item">
+                <img src="https://muzdalifah.my/wp-content/uploads/2022/06/1.jpg" alt="Chicken Chop">
+                <br>Chicken Chop
+            </div>
+        </label>
+        <label>
+            <input type="radio" name="food" value="sushi">
+            <div class="food-item">
+                <img src="https://fusedbyfionauyema.com/wp-content/uploads/2021/02/Fused-by-Fiona-Uyema-Sushi-Q-A-how-to-make-sushi-at-home.jpg" alt="Sushi">
+                <br>Sushi
+            </div>
+        </label>
+        <label>
+            <input type="radio" name="food" value="vietnam roll">
+            <div class="food-item">
+                <img src="https://healthynibblesandbits.com/wp-content/uploads/2020/02/Vietnamese-Spring-Rolls-Recipe-Card.jpg" alt="Vietnam Roll">
+                <br>Vietnam Roll
+            </div>
+        </label>
+        <label>
+            <input type="radio" name="food" value="nasi goreng kampung">
+            <div class="food-item">
+                <img src="https://sumirancafe.com.my/wp-content/uploads/2021/05/Nasi-goreng-kampung-1-scaled.jpg" alt="Nasi Goreng Kampung">
+                <br>Nasi Goreng Kampung
+            </div>
+        </label>
+        <label>
+            <input type="radio" name="food" value="fish&chip">
+            <div class="food-item">
+                <img src="https://www.thespruceeats.com/thmb/sdVTq0h7xZvJjPr6bE2fhh5M3NI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/SES-best-fish-and-chips-recipe-434856-hero-01-27d8b57008414972822b866609d0af9b.jpg" alt="Fish and Chips">
+                <br>Fish & Chips
+            </div>
+        </label>
+        <label>
+            <input type="radio" name="food" value="ayam gepuk">
+            <div class="food-item">
+                <img src="https://images.deliveryhero.io/image/fd-my/Products/1427854544.jpg" alt="Ayam Gepuk">
+                <br>Ayam Gepuk
+            </div>
+        </label>
+    </div>
+    
+    <button onclick="nextPage()">Teruskan</button>
+
+    <script>
+        function nextPage() {
+            const selectedFood = document.querySelector('input[name="food"]:checked');
+            if (selectedFood) {
+                localStorage.setItem("selectedFood", selectedFood.value);
+                window.location.href = 'movie.html'; // Ganti dengan nama fail halaman pemilihan filem
+            } else {
+                alert("Makcik suka makan sila pilih nak makan yang mana."); // Peringatan jika tiada pilihan dibuat
+            }
+        }
+    </script>
+</body>
+</html>

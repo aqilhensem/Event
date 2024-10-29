@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jemputan</title>
+    <style>
+        body {
+            background-color: pink; /* Warna latar belakang */
+            text-align: center; /* Pusatkan teks */
+            font-family: Arial, sans-serif; /* Font yang lebih cantik */
+            height: 100vh; /* Ketinggian penuh viewport */
+            display: flex; /* Menggunakan Flexbox untuk pemusatan */
+            flex-direction: column; /* Susunan elemen secara menegak */
+            justify-content: center; /* Pusatkan secara menegak */
+            align-items: center; /* Pusatkan secara mendatar */
+            margin: 0; /* Tiada margin pada body */
+            position: relative; /* Untuk letakkan elemen lain dalam posisi relatif */
+        }
+
+        /* Gaya untuk emoji cinta besar di latar belakang */
+        .large-love {
+            position: absolute;
+            font-size: 100px; /* Saiz besar untuk emoji cinta */
+            opacity: 0.1; /* Transparansi */
+        }
+
+        button {
+            background-color: red; /* Warna latar belakang butang */
+            color: white; /* Warna teks butang */
+            font-size: 24px; /* Saiz font yang lebih besar */
+            padding: 15px 30px; /* Ruang dalam butang */
+            border: none; /* Tiada sempadan */
+            border-radius: 10px; /* Sudut bulat */
+            cursor: pointer; /* Kursor menjadi tangan apabila hover */
+            margin: 10px; /* Ruang antara butang */
+            transition: background-color 0.5s; /* Animasi untuk perubahan warna */
+        }
+
+        button:hover {
+            background-color: darkred; /* Warna lebih gelap apabila hover */
+        }
+
+        h1 {
+            font-size: 32px; /* Saiz font untuk soalan */
+        }
+
+        .small-love {
+            font-size: 20px; /* Saiz kecil untuk emoji cinta */
+            opacity: 1; /* Tiada transparansi */
+        }
+    </style>
+</head>
+<body>
+    <div id="question-container">
+        <h1>Would you like to go out with me for a date? ❤️</h1>
+        <div id="button-container">
+            <button id="yes-button" onclick="response('yes')">Yes <span class="small-love">❤️</span></button>
+            <button id="no-button" onclick="response('no')">No</button>
+        </div>
+    </div>
+
+    <!-- Emoji cinta besar tersebar di latar belakang -->
+    <div class="large-love" style="top: 10%; left: 10%;">❤️</div>
+    <div class="large-love" style="top: 20%; left: 30%;">❤️</div>
+    <div class="large-love" style="top: 40%; left: 50%;">❤️</div>
+    <div class="large-love" style="top: 60%; left: 70%;">❤️</div>
+    <div class="large-love" style="top: 80%; left: 20%;">❤️</div>
+    <div class="large-love" style="top: 30%; left: 80%;">❤️</div>
+
+    <script>
+        function response(answer) {
+            const questionContainer = document.getElementById('question-container');
+            const yesButton = document.getElementById('yes-button');
+
+            if (answer === 'yes') {
+                // Tunjukkan emoji cinta apabila Yes ditekan
+                yesButton.innerHTML = 'Yes <span class="small-love">❤️</span>'; // Emoji cinta di posisi tetap
+                setTimeout(() => {
+                    questionContainer.innerHTML = `
+                        <h2>🎁 Here’s a cute gift for you! 🎁</h2>
+                        <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExamZ4aWE1endhbzI2NG1wZ2M1NXljaTJ3azFzNnJkYm05ZHRwb2VudyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MDJ9IbxxvDUQM/giphy.gif" alt="Cute Cat GIF" style="max-width: 100%; height: auto;">
+                        <p>Don't go anywhere! ❤️</p>
+                        <button onclick="window.location.href='calendar.html'">Click here to choose a date</button>
+                    `;
+                }, 500);
+            } else {
+                // Redirect to the new page for "No" response
+                window.location.href = 'no-response.html'; // Pastikan nama fail ini betul
+            }
+        }
+    </script>
+</body>
+</html>

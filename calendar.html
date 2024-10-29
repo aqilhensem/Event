@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilih Tarikh</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <style>
+        body {
+            background-color: pink; /* Warna latar belakang */
+            text-align: center; /* Pusatkan teks */
+            font-family: Arial, sans-serif; /* Font yang lebih cantik */
+            height: 100vh; /* Ketinggian penuh viewport */
+            display: flex; /* Menggunakan Flexbox untuk pemusatan */
+            flex-direction: column; /* Susunan elemen secara menegak */
+            justify-content: center; /* Pusatkan secara menegak */
+            align-items: center; /* Pusatkan secara mendatar */
+            margin: 0; /* Tiada margin pada body */
+            position: relative; /* Untuk mengawal posisi emoji */
+            overflow: hidden; /* Menyembunyikan overflow emoji */
+        }
+
+        h1 {
+            margin-bottom: 20px; /* Ruang bawah tajuk */
+            font-size: 28px; /* Saiz font untuk tajuk */
+            color: red; /* Warna tajuk */
+        }
+
+        input {
+            padding: 10px; /* Ruang dalam untuk input */
+            font-size: 18px; /* Saiz font untuk input */
+            border: 2px solid red; /* Sempadan untuk input */
+            border-radius: 5px; /* Sudut bulat */
+            width: 250px; /* Lebar input */
+            margin-bottom: 20px; /* Ruang bawah untuk input */
+        }
+
+        button {
+            background-color: red; /* Warna latar belakang butang */
+            color: white; /* Warna teks butang */
+            font-size: 18px; /* Saiz font yang lebih besar */
+            padding: 10px 20px; /* Ruang dalam butang */
+            border: none; /* Tiada sempadan */
+            border-radius: 5px; /* Sudut bulat */
+            cursor: pointer; /* Kursor menjadi tangan apabila hover */
+            transition: background-color 0.3s; /* Animasi untuk perubahan warna */
+        }
+
+        button:hover {
+            background-color: darkred; /* Warna lebih gelap apabila hover */
+        }
+
+        /* Animasi untuk emoji hati */
+        .heart {
+            position: absolute; /* Posisi mutlak */
+            font-size: 24px; /* Saiz emoji */
+            opacity: 0.5; /* Keterlihatan emoji */
+            animation: move 10s infinite; /* Animasi bergerak */
+        }
+
+        /* Animasi berbeza untuk setiap emoji */
+        .heart:nth-child(1) { animation: move1 12s infinite; }
+        .heart:nth-child(2) { animation: move2 10s infinite; }
+        .heart:nth-child(3) { animation: move3 14s infinite; }
+        .heart:nth-child(4) { animation: move4 8s infinite; }
+        .heart:nth-child(5) { animation: move5 9s infinite; }
+        .heart:nth-child(6) { animation: move6 15s infinite; }
+        .heart:nth-child(7) { animation: move7 11s infinite; }
+        .heart:nth-child(8) { animation: move8 13s infinite; }
+
+        @keyframes move1 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(100px, -50px); }
+            50% { transform: translate(50px, 100px); }
+            75% { transform: translate(-100px, 30px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        @keyframes move2 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(-50px, 20px); }
+            50% { transform: translate(70px, -30px); }
+            75% { transform: translate(30px, 80px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        @keyframes move3 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(30px, -100px); }
+            50% { transform: translate(-70px, 50px); }
+            75% { transform: translate(100px, 20px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        @keyframes move4 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(-100px, -50px); }
+            50% { transform: translate(80px, 30px); }
+            75% { transform: translate(-60px, 100px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        @keyframes move5 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(50px, 50px); }
+            50% { transform: translate(-30px, -80px); }
+            75% { transform: translate(100px, 10px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        @keyframes move6 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(70px, 30px); }
+            50% { transform: translate(-20px, -70px); }
+            75% { transform: translate(40px, 50px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        @keyframes move7 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(-40px, 60px); }
+            50% { transform: translate(30px, -40px); }
+            75% { transform: translate(80px, 30px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        @keyframes move8 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(20px, 50px); }
+            50% { transform: translate(-50px, -30px); }
+            75% { transform: translate(60px, 80px); }
+            100% { transform: translate(0, 0); }
+        }
+    </style>
+</head>
+<body>
+    <h1>When you are free?</h1>
+    <input type="text" id="date-picker" placeholder="Makcik saya sila pilih tarikh">
+    <button onclick="nextPage()">Click Me</button>
+
+    <!-- Tambah emoji hati bergerak -->
+    <div class="heart" style="top: 20%; left: 10%;">❤️</div>
+    <div class="heart" style="top: 30%; left: 60%;">❤️</div>
+    <div class="heart" style="top: 50%; left: 30%;">❤️</div>
+    <div class="heart" style="top: 70%; left: 80%;">❤️</div>
+    <div class="heart" style="top: 40%; left: 20%;">❤️</div>
+    <div class="heart" style="top: 10%; left: 50%;">❤️</div>
+    <div class="heart" style="top: 80%; left: 15%;">❤️</div>
+    <div class="heart" style="top: 60%; left: 70%;">❤️</div>
+
+    <script>
+        flatpickr("#date-picker", {
+            dateFormat: "Y-m-d",
+        });
+
+        function nextPage() {
+            const date = document.getElementById("date-picker").value;
+            if (date) {
+                localStorage.setItem("selectedDate", date);
+                window.location.href = 'food.html';
+            } else {
+                alert('Pilih tarikh makcik oii!');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengesahan</title>
+    <style>
+        body {
+            text-align: center; /* Pusatkan teks */
+            font-family: Arial, sans-serif; /* Font yang lebih cantik */
+            background-color: #ffccff; /* Warna latar belakang pink */
+            margin: 0; /* Tiada margin pada body */
+            padding: 20px; /* Ruang dalam untuk body */
+        }
+
+        h1 {
+            margin-bottom: 20px; /* Ruang bawah tajuk */
+            font-size: 28px; /* Saiz font untuk tajuk */
+            color: #333; /* Warna tajuk */
+        }
+
+        p {
+            font-size: 20px; /* Saiz font untuk perenggan */
+            color: #333; /* Warna teks */
+        }
+
+        .confirmation-container {
+            display: flex; /* Susun poster di sebelah teks */
+            flex-direction: column; /* Susun secara menegak */
+            align-items: center; /* Pusatkan elemen secara mendatar */
+            margin-top: 20px; /* Ruang atas untuk container */
+        }
+
+        .movie-poster {
+            max-width: 300px; /* Lebar maksimum untuk poster */
+            margin-top: 20px; /* Ruang atas untuk poster */
+        }
+    </style>
+</head>
+<body>
+    <h1>Pengesahan Jemputan</h1>
+    <p>See you at <span id="date"></span> ❤️</p>
+    <p>Makanan yang dipilih: <span id="food"></span></p>
+    <p>Filem yang dipilih: <span id="movie"></span></p>
+    <p>Level keterujaan anda: <span id="excitement"></span></p>
+
+    <div class="confirmation-container">
+        <img id="poster" class="movie-poster" src="" alt="Poster Filem">
+    </div>
+
+    <script>
+        // Mengambil data dari localStorage
+        document.getElementById("date").innerText = localStorage.getItem("selectedDate");
+        document.getElementById("food").innerText = localStorage.getItem("selectedFood");
+        
+        // Ambil nama filem yang dipilih dari localStorage
+        let selectedMovie = localStorage.getItem("selectedMovie");
+        
+        // Mengubah nama filem berdasarkan pilihan
+        let movieTitle;
+        let moviePoster;
+
+        if (selectedMovie === 'movie1') {
+            movieTitle = "Venom: The Last Dance";
+            moviePoster = "https://poster.gsc.com.my/2024/240603_VenomTheLastDance_big.jpg"; // URL poster
+        } else if (selectedMovie === 'movie2') {
+            movieTitle = "Afavae";
+            moviePoster = "https://www.gscmovies.com.my/wp-content/uploads/2024/09/afavae.jpg"; // URL poster
+        } else if (selectedMovie === 'movie3') {
+            movieTitle = "Stand By Me";
+            moviePoster = "https://poster.gsc.com.my/2024/241021_StandByMe_big.jpg"; // URL poster
+        } else if (selectedMovie === 'movie4') {
+            movieTitle = "Smile 2";
+            moviePoster = "https://poster.gsc.com.my/2024/240619_Smile2_big.jpg"; // URL poster
+        } else if (selectedMovie === 'movie5') {
+            movieTitle = "Operation Undead";
+            moviePoster = "https://poster.gsc.com.my/2024/240925_OperationUndead_big.jpg"; // URL poster
+        } else if (selectedMovie === 'movie6') {
+            movieTitle = "Harry Potter and The Sorcerer's Stone (Rerun)";
+            moviePoster = "https://poster.gsc.com.my/2024/240822_RerunHarryPotterandTheSorcerer'sStone_big.jpg"; // URL poster
+        } else {
+            movieTitle = "Tidak ada filem yang dipilih";
+            moviePoster = ""; // Tiada poster
+        }
+
+        document.getElementById("movie").innerText = movieTitle;
+        document.getElementById("excitement").innerText = localStorage.getItem("excitementLevel") + '%'; 
+
+        // Memaparkan poster berdasarkan pilihan
+        document.getElementById("poster").src = moviePoster; 
+    </script>
+</body>
+</html>

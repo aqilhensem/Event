@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate How Excited Are You?</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffccff;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #333;
+            position: relative;
+        }
+
+        #gif-container {
+            margin: 10px auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        #gif-container img {
+            width: 250px;
+            margin-bottom: 15px;
+        }
+
+        #excitement-slider {
+            width: 80%;
+            margin: 20px 0;
+        }
+
+        button {
+            background-color: #ff5733;
+            color: white;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #c0392b;
+        }
+
+        .love-container {
+            position: relative;
+            height: 100px;
+            margin-top: 30px;
+        }
+
+        .love-icon {
+            font-size: 24px;
+            position: absolute;
+            opacity: 0.8;
+        }
+
+        /* Animasi pergerakan berbeza */
+        @keyframes float1 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(-10px, -10px); }
+            50% { transform: translate(10px, -20px); }
+            75% { transform: translate(-5px, -15px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        @keyframes float2 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(10px, -15px); }
+            50% { transform: translate(-10px, -25px); }
+            75% { transform: translate(5px, -10px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        @keyframes float3 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(-15px, -5px); }
+            50% { transform: translate(10px, -15px); }
+            75% { transform: translate(-5px, -20px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        @keyframes float4 {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(15px, -10px); }
+            50% { transform: translate(-15px, -20px); }
+            75% { transform: translate(10px, -15px); }
+            100% { transform: translate(0, 0); }
+        }
+    </style>
+</head>
+<body>
+    <h1>Rate How Excited Are You?</h1>
+
+    <div class="love-container">
+        <span class="love-icon" style="left: 5%; top: -30px; animation: float1 4.5s infinite;">❤️</span>
+        <span class="love-icon" style="left: 85%; top: -20px; animation: float2 5s infinite;">❤️</span>
+        <span class="love-icon" style="left: 15%; top: 20px; animation: float3 4s infinite;">❤️</span>
+        <span class="love-icon" style="left: 75%; top: 10px; animation: float4 5.5s infinite;">❤️</span>
+        <span class="love-icon" style="left: 45%; top: -15px; animation: float2 4.8s infinite;">❤️</span>
+    </div>
+
+    <div id="gif-container">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbG9uOXAwNGRqN3FseXF2M3Z6OTl1amU0bTZjOGxqazV4d3A2bjl4ayZlcD12MV9naWZzX3NlYXJjaCZjdD1n/KztT2c4u8mYYUiMKdJ/giphy.gif" alt="Excitement GIF">
+    </div>
+
+    <input type="range" id="excitement-slider" min="0" max="100" value="50">
+
+    <button onclick="nextPage()">Continue</button>
+
+    <div class="love-container">
+        <span class="love-icon" style="left: 10%; bottom: -10px; animation: float4 5.2s infinite;">❤️</span>
+        <span class="love-icon" style="left: 80%; bottom: -5px; animation: float1 4.7s infinite;">❤️</span>
+        <span class="love-icon" style="left: 25%; bottom: -15px; animation: float3 5.3s infinite;">❤️</span>
+        <span class="love-icon" style="left: 70%; bottom: -20px; animation: float2 4.9s infinite;">❤️</span>
+        <span class="love-icon" style="left: 40%; bottom: -10px; animation: float4 5.1s infinite;">❤️</span>
+    </div>
+
+    <script>
+        function nextPage() {
+            const excitementLevel = document.getElementById("excitement-slider").value;
+            localStorage.setItem("excitementLevel", excitementLevel);
+            window.location.href = 'confirmation.html';
+        }
+    </script>
+</body>
+</html>

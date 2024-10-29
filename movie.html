@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilih Filem</title>
+    <style>
+        body {
+            text-align: center; /* Pusatkan teks */
+            font-family: Arial, sans-serif; /* Font yang lebih cantik */
+            background-color: #ffccff; /* Warna latar belakang pink */
+            margin: 0; /* Tiada margin pada body */
+            padding: 20px; /* Ruang dalam untuk body */
+        }
+
+        h1 {
+            margin-bottom: 20px; /* Ruang bawah tajuk */
+            font-size: 28px; /* Saiz font untuk tajuk */
+            color: #333; /* Warna tajuk */
+        }
+
+        .movie-container {
+            display: grid; /* Menggunakan grid untuk susunan */
+            grid-template-columns: repeat(3, 1fr); /* 3 kolum */
+            gap: 20px; /* Ruang antara kotak */
+            margin-bottom: 20px; /* Ruang bawah untuk kotak filem */
+        }
+
+        .movie-box {
+            border: 2px solid #ccc; /* Sempadan untuk kotak */
+            border-radius: 10px; /* Sudut bulat */
+            cursor: pointer; /* Kursor menjadi tangan apabila hover */
+            overflow: hidden; /* Sembunyikan overflow */
+            transition: transform 0.3s; /* Animasi untuk hover */
+            display: flex; /* Menggunakan flex untuk pusatkan gambar */
+            flex-direction: column; /* Susunan elemen secara menegak */
+            align-items: center; /* Pusatkan secara menegak */
+        }
+
+        .movie-box img {
+            max-width: 100%; /* Lebar maksimum untuk gambar */
+            max-height: 300px; /* Tinggi maksimum untuk gambar */
+            object-fit: contain; /* Pastikan gambar mengekalkan nisbah aspek */
+        }
+
+        .movie-title {
+            padding: 10px; /* Ruang dalam untuk tajuk */
+            text-align: center; /* Pusatkan teks tajuk */
+            font-size: 18px; /* Saiz font untuk tajuk */
+            color: #333; /* Warna teks tajuk */
+            background-color: #fff; /* Warna latar belakang tajuk */
+            width: 100%; /* Lebar penuh untuk tajuk */
+        }
+
+        .movie-box:hover {
+            transform: scale(1.05); /* Besarkan kotak apabila hover */
+            border-color: #ff5733; /* Tukar warna sempadan apabila hover */
+        }
+
+        button {
+            background-color: #ff5733; /* Warna latar belakang butang */
+            color: white; /* Warna teks butang */
+            font-size: 18px; /* Saiz font yang lebih besar */
+            padding: 10px 20px; /* Ruang dalam butang */
+            border: none; /* Tiada sempadan */
+            border-radius: 5px; /* Sudut bulat */
+            cursor: pointer; /* Kursor menjadi tangan apabila hover */
+            transition: background-color 0.3s; /* Animasi untuk perubahan warna */
+        }
+
+        button:hover {
+            background-color: #c0392b; /* Warna lebih gelap apabila hover */
+        }
+
+        .selected {
+            border-color: #ff5733; /* Warna sempadan untuk filem yang dipilih */
+        }
+    </style>
+</head>
+<body>
+    <h1>Pilih filem yang ingin ditonton</h1>
+    <div class="movie-container">
+        <div class="movie-box" onclick="selectMovie('movie1', this)">
+            <img src="https://poster.gsc.com.my/2024/240603_VenomTheLastDance_big.jpg" alt="Filem 1">
+            <div class="movie-title">Filem 1: Venom: The Last Dance</div>
+        </div>
+        <div class="movie-box" onclick="selectMovie('movie2', this)">
+            <img src="https://www.gscmovies.com.my/wp-content/uploads/2024/09/afavae.jpg" alt="Filem 2">
+            <div class="movie-title">Filem 2: Afavae</div>
+        </div>
+        <div class="movie-box" onclick="selectMovie('movie3', this)">
+            <img src="https://poster.gsc.com.my/2024/241021_StandByMe_big.jpg" alt="Filem 3">
+            <div class="movie-title">Filem 3: Stand By Me</div>
+        </div>
+        <div class="movie-box" onclick="selectMovie('movie4', this)">
+            <img src="https://poster.gsc.com.my/2024/240619_Smile2_big.jpg" alt="Filem 4">
+            <div class="movie-title">Filem 4: Smile 2</div>
+        </div>
+        <div class="movie-box" onclick="selectMovie('movie5', this)">
+            <img src="https://poster.gsc.com.my/2024/240925_OperationUndead_big.jpg" alt="Filem 5">
+            <div class="movie-title">Filem 5: Operation Undead</div>
+        </div>
+        <div class="movie-box" onclick="selectMovie('movie6', this)">
+            <img src="https://poster.gsc.com.my/2024/240822_RerunHarryPotterandTheSorcerer'sStone_big.jpg" alt="Filem 6">
+            <div class="movie-title">Filem 6: Harry Potter and The Sorcerer's Stone (Rerun)</div>
+        </div>
+    </div>
+    <button id="continue-button" disabled onclick="nextPage()">Continue</button>
+
+    <script>
+        let selectedMovie = '';
+
+        function selectMovie(movie, element) {
+            selectedMovie = movie; // Simpan pilihan filem
+            const boxes = document.querySelectorAll('.movie-box'); // Ambil semua kotak filem
+            boxes.forEach(box => {
+                box.classList.remove('selected'); // Buang kelas 'selected' dari semua kotak
+            });
+            element.classList.add('selected'); // Tambah kelas 'selected' ke kotak yang dipilih
+            document.getElementById("continue-button").disabled = false; // Aktifkan butang
+        }
+
+        function nextPage() {
+            localStorage.setItem("selectedMovie", selectedMovie);
+            window.location.href = 'rate.html'; // Arahkan ke halaman penilaian
+        }
+    </script>
+</body>
+</html>
